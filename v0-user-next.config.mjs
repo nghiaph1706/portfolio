@@ -4,6 +4,7 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: [
+      'nghiaph.id.vn',
       'res.cloudinary.com',
       'localhost',
       '127.0.0.1',
