@@ -10,6 +10,8 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { MobileMenu } from "@/components/mobile-menu"
+// Import the CloudinaryImage component at the top of the file
+import { CloudinaryImage } from "@/components/cloudinary-image"
 
 export default function Home() {
   const [showScrollTop, setShowScrollTop] = useState(false)
@@ -132,6 +134,7 @@ export default function Home() {
                   alt="Profile Image"
                   className="rounded-lg object-cover w-full max-w-[450px]"
                   priority
+                  unoptimized={true} // Add this line to bypass Next.js image optimization
                 />
               </div>
             </div>
@@ -387,6 +390,7 @@ export default function Home() {
   )
 }
 
+// Then update the ProjectCard function
 function ProjectCard({
   title,
   description,
@@ -401,7 +405,11 @@ function ProjectCard({
   return (
     <Card className="overflow-hidden h-full flex flex-col">
       <div className="aspect-video relative">
-        <Image src={imageSrc || "/placeholder.svg"} alt={title} fill className="object-cover" />
+        {imageSrc.includes("cloudinary") ? (
+          <CloudinaryImage src={imageSrc} alt={title} width={300} height={200} className="object-cover w-full h-full" />
+        ) : (
+          <Image src={imageSrc || "/placeholder.svg"} alt={title} fill className="object-cover" />
+        )}
       </div>
       <CardContent className="p-6 flex-1 flex flex-col">
         <div className="space-y-2 flex-1">
