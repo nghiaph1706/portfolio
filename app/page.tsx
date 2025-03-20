@@ -406,7 +406,7 @@ function ProjectCard({
     <Card className="overflow-hidden h-full flex flex-col">
       <div className="aspect-video relative">
         {imageSrc.includes("cloudinary") ? (
-          <CloudinaryImage src={imageSrc} alt={title} width={300} height={200} className="object-cover w-full h-full" />
+          <CloudinaryImage src={imageSrc} alt={title} className="object-cover w-full h-full" />
         ) : (
           <Image src={imageSrc || "/placeholder.svg"} alt={title} fill className="object-cover" />
         )}
